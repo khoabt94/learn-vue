@@ -1,13 +1,22 @@
 <script lang="ts">
-import Modal from './components/Modal.vue'
+import Button from './components/Button.vue'
+import Title from './components/Title.vue'
 export default {
     name: 'App',
     components: {
-      Modal,
+      Button,
+      Title
     },
     data() {
       return {
-        name: 'Khoa'
+        name: 'Khoa',
+        title: 'login',
+        showTitle: false
+      }
+    },
+    methods: {
+      toggleShow() {
+        this.showTitle = !this.showTitle
       }
     }
 }
@@ -15,7 +24,10 @@ export default {
 
 <template>
   <h1>Hello World {{ name }}</h1>
-  <Modal/>
+  <Button variant="danger" :onClick="toggleShow" >
+    <p>{{title}}</p>
+  </Button>
+  <Title :title="title" :show="showTitle"/>
 </template>
 
 <style>
